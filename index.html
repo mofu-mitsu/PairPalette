@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pair Palette Territory</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="game-panel" aria-label="陣地取りパズルゲーム">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Pair Palette Territory</p>
+          <h1>キャラと並んで、色を奪う。</h1>
+        </div>
+        <div class="match-clock" aria-live="polite">
+          <span id="timer">75</span>
+          <small>seconds</small>
+        </div>
+      </header>
+
+      <section class="team-preview" aria-label="チームプレビュー">
+        <article class="portrait-card ally-theme">
+          <div class="portrait-stack">
+            <div class="portrait" id="playerPortrait"></div>
+            <div class="portrait small" id="supportPortrait"></div>
+          </div>
+          <div>
+            <p class="side-label">Player team</p>
+            <strong id="playerTeamName">Player</strong>
+            <span id="allyLine">キャラを選ぶと、ここに相棒の気配が残る。</span>
+          </div>
+        </article>
+
+        <article class="portrait-card rival-theme">
+          <div class="portrait-stack">
+            <div class="portrait" id="enemyAPortrait"></div>
+            <div class="portrait small" id="enemyBPortrait"></div>
+          </div>
+          <div>
+            <p class="side-label">Rival team</p>
+            <strong id="rivalTeamName">Rival</strong>
+            <span id="rivalLine">向こう側にも、別の流れがある。</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="setup" aria-label="キャラクター選択">
+        <div class="selector-card player-side">
+          <label>
+            <span>プレイヤー</span>
+            <select id="playerSelect"></select>
+          </label>
+          <label>
+            <span>サポート</span>
+            <select id="supportSelect"></select>
+          </label>
+        </div>
+
+        <button id="startButton" class="start-button" type="button">開始</button>
+
+        <div class="selector-card rival-side">
+          <label>
+            <span>敵A</span>
+            <select id="enemyASelect"></select>
+          </label>
+          <label>
+            <span>敵B</span>
+            <select id="enemyBSelect"></select>
+          </label>
+        </div>
+      </section>
+
+      <section class="score-strip" aria-label="スコア">
+        <div class="score-block player">
+          <span class="score-name">自陣</span>
+          <strong id="playerScore">0%</strong>
+        </div>
+        <div class="meter" aria-hidden="true">
+          <span id="playerMeter"></span>
+          <span id="rivalMeter"></span>
+        </div>
+        <div class="score-block rival">
+          <span class="score-name">敵陣</span>
+          <strong id="rivalScore">0%</strong>
+        </div>
+      </section>
+
+      <section class="board-wrap">
+        <div id="board" class="board" role="grid" aria-label="陣地盤面"></div>
+        <aside class="side-console" aria-label="試合情報">
+          <div class="status-card">
+            <span class="mini-label">相棒</span>
+            <strong id="allyName">未選択</strong>
+            <p id="allyTrait">開始すると、相棒の役割が表示される。</p>
+          </div>
+
+          <button id="skillButton" class="skill-button" type="button" disabled>
+            <span id="skillName">Skill</span>
+            <small id="skillCooldown">準備中</small>
+          </button>
+
+          <div class="log-box" id="logBox" aria-live="polite">
+            <p>盤面はまだ眠っている。</p>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="controls">
+        <span>移動: 盤面クリック / WASD / 矢印</span>
+        <span>スキル: Space</span>
+        <span>画像: assets/characters/キャラID.png</span>
+      </footer>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
